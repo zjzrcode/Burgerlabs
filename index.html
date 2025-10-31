@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BurgersLabs - Las mejores hamburguesas y lomos artesanales de la ciudad. Ingredientes frescos y de calidad.">
+    <title>BurgersLabs - Hamburguesas & Lomos Artesanales</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fondo fijo -->
+    <div class="background-container"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="inicio/logo.png" alt="BurgersLabs Logo">
+            </div>
+<nav class="navbar">
+    <a href="#inicio" class="nav-link">Inicio</a>
+    <a href="#menu" class="nav-link">Menú</a>
+    <a href="#nosotros" class="nav-link">Nosotros</a>
+    <a href="#video-info" class="nav-link">Servicio Grupal</a>
+    <a href="#contacto" class="nav-link">Contacto</a>
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>LAS MEJORES HAMBURGUESAS DE LA CIUDAD</h1>
+            <p>100% Artesanal - Ingredientes frescos</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">VER ESPECIALIDADES</a>
+                <a href="https://wa.me/5492657560516" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> PEDIR AHORA
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Desplázate</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Sección del Menú -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">NUESTRAS ESPECIALIDADES</h2>
+            <div class="menu-grid">
+                <!-- Hamburguesa 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="inicio/clasica1.png" alt="Burger Clásica">
+                    </div>
+                    <div class="item-content">
+                        <h3>Burger Clásica</h3>
+                        <p>Pan de papa, Carne 100g, queso cheddar, jamón, lechuga, tomate, salsa lab y papas fritas</p>
+                        <div class="item-footer">
+                            <span class="price">$8,500</span>
+                            <button class="btn-add-cart" data-item="Burger Clásica" data-price="8500">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hamburguesa 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="inicio/prompt1.png" alt="Fusion Alpha">
+                    </div>
+                    <div class="item-content">
+                        <h3>Fusion Alpha</h3>
+                        <p>Pan de papa, Triple medallon smash(70 gr), triple queso cheddar, cebolla morada, tomate y salsa quantica.</p>
+                        <div class="item-footer">
+                            <span class="price">$9,500</span>
+                            <button class="btn-add-cart" data-item="Fusion Alpha" data-price="9500">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lomo 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="inicio/lomo.png" alt="Lomo Clásico">
+                    </div>
+                    <div class="item-content">
+                        <h3>Lomo Clásico</h3>
+                        <p>Pan, lomo, lechuga, tomate, huevos, salsa (a elección), jamón, queso tybo</p>
+                        <div class="item-footer">
+                            <span class="price">$9,500</span>
+                            <button class="btn-add-cart" data-item="Lomo Clásico" data-price="9500">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- doble hélice -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="inicio/doble.png" alt="Caja de mini hamburguesas">
+                    </div>
+                    <div class="item-content">
+                        <h3>Doble Hélice</h3>
+                        <p>Doble medallon smash (80 gr), doble queso cheddar, cebolla crispy,  doble bacon, huevo frito y salsa lab secret.</p>
+                        <div class="item-footer">
+                            <span class="price">$9,500</span>
+                            <button class="btn-add-cart" data-item="Doble Hélice" data-price="9500">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                                <!-- fusion x -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="inicio/fusionx.png" alt="Fusion X">
+                    </div>
+                    <div class="item-content">
+                        <h3>Fusion X</h3>
+                        <p> Doble medallón smash (90 gr), doble cheddar, cebolla caramelizada, morrón asado, salsa lab y pan de papa.</p>
+                        <div class="item-footer">
+                            <span class="price">$10,000</span>
+                            <button class="btn-add-cart" data-item="Fusion X" data-price="10000">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                                                <!-- miga -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="inicio/miga.png" alt="Project M">
+                    </div>
+                    <div class="item-content">
+                        <h3>Project M</h3>
+                        <p> 2 sandwich de miga tostado de jamón y queso, doble medallon smash (80 g), doble cheddar y salsa Lab Secret.</p>
+                        <div class="item-footer">
+                            <span class="price">$11,000</span>
+                            <button class="btn-add-cart" data-item="Project M" data-price="11000">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="ver-menu-completo">
+                <a href="https://drive.google.com/file/d/1XA0_v_iFTPp5b19N1ni43-9ldNOYqeQR/view?usp=sharing" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-book-open"></i> VER MENÚ COMPLETO
+                </a>
+                <p>Descarga nuestro menú en PDF <a href="inicio/menu.pdf" download class="download-link"><i class="fas fa-file-pdf"></i> aquí</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Pedidos -->
+    <section class="cta-pedidos">
+        <div class="container">
+            <div class="cta-content">
+                <h2><i class="fas fa-phone-alt"></i> ¡HAZ TU PEDIDO AHORA!</h2>
+                <p>Llámanos o escríbenos por WhatsApp para pedidos a domicilio</p>
+                <a href="https://wa.me/5492657560516" target="_blank" class="btn btn-whatsapp-large">
+                    <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                </a>
+                <p class="telefono">Teléfono: <strong>+54 2657-560516</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Video Informativo -->
+    <section id="video-info" class="video-info-section">
+        <div class="container">
+            <div class="video-info-content">
+                <!-- Video en formato teléfono -->
+                <div class="phone-video-container">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <video controls class="phone-video">
+                                <source src="inicio/TURISMO.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento video.
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="phone-home"></div>
+                    </div>
+                    <div class="video-caption">
+                        <i class="fas fa-info-circle"></i>
+                        Video informativo sobre nuestro servicio premium
+                    </div>
+                </div>
+
+                <!-- Tarjeta informativa -->
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="card-badge">
+                            <i class="fas fa-crown"></i>
+                            SERVICIO PREMIUM
+                        </div>
+                        <h3>Atención Personalizada para Grupos y Delegaciones</h3>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p class="card-intro">En <strong>BurgerLabs</strong> nos especializamos en brindar una experiencia gastronómica exclusiva para grupos, comisiones y delegaciones que visitan nuestra ciudad.</p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Grupos de Viaje</h4>
+                                    <p>Atención coordinada para tours, excursiones y grupos turísticos con servicio rápido y eficiente.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Comisiones Oficiales</h4>
+                                    <p>Servicio protocolar para delegaciones gubernamentales y representaciones oficiales.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Delegaciones Empresariales</h4>
+                                    <p>Catering corporativo para eventos, convenciones y reuniones de negocios.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="process-info">
+                            <h5>Preparación Optimizada para Grupos</h5>
+                            <p>Implementamos un <strong>sistema de producción sincronizado</strong> que nos permite servir grupos grandes manteniendo la calidad artesanal. Cada pedido es programado y preparado en secuencias optimizadas.</p>
+                        </div>
+
+                        <div class="benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Servicio rápido y eficiente</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-star"></i>
+                                <span>Calidad garantizada</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Reservas anticipadas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="https://wa.me/5492657560516?text=Hola BurgerLabs, me interesa el servicio para grupos. Necesito información para %23personas" 
+                           class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            COTIZAR SERVICIO GRUPAL
+                        </a>
+                        <p class="reserva-text">Reserva con 24h de anticipación</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sobre Nosotros -->
+    <section id="nosotros" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">SOBRE NOSOTROS</h2>
+                <p>Desde 2012 sirviendo las hamburguesas más jugosas y los lomos más altos de la ciudad. Todos nuestros productos son preparados al momento con ingredientes de primera calidad.</p>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4>Preparación artesanal</h4>
+                        <p>Cada producto es elaborado cuidadosamente con técnicas tradicionales</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4>Delivery rápido</h4>
+                        <p>Entregamos tu pedido en tiempo récord manteniendo la calidad</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Ingredientes frescos</h4>
+                        <p>Utilizamos solo productos de primera calidad en todas nuestras preparaciones</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">CONTACTO</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Dirección</h3>
+                            <p>Dark Kitchen</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Teléfono</h3>
+                            <p>+54 2657-560516</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Horarios</h3>
+                            <p>Lunes a Viernes: 20:00 - 02:00<br>Sabados y Domingos: 12:00 - 02:00</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/burg3r_lab/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://wa.me/5492657560516" target="_blank" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formsubmit.co/grancomida2025@gmail.com" method="POST">
+                        <h3 class="contact-form-title">Llena los datos y te avisaremos de nuestras promociones</h3>
+                        <input type="text" name="nombre" placeholder="Nombre" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <textarea name="mensaje" placeholder="Tu mensaje..." required></textarea>
+                        <input type="hidden" name="_next" value="index.html">
+                        <button type="submit" class="btn btn-primary">ENVIAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrito Flotante -->
+    <div class="cart-floating" id="cartFloating">
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </div>
+
+    <!-- Modal del Carrito -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Pedido</h3>
+                <button class="close-cart" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Los items del carrito se agregarán aquí dinámicamente -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0</span>
+                </div>
+                <a href="https://wa.me/5492657560516" class="btn btn-whatsapp" id="whatsappOrder" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="inicio/logo.png" alt="BurgersLabs Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#inicio" class="footer-link">Inicio</a>
+                <a href="#menu" class="footer-link">Menú</a>
+                <a href="#nosotros" class="footer-link">Nosotros</a>
+                <a href="#contacto" class="footer-link">Contacto</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/burg3r_lab/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://wa.me/5492657560516" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 BurgerLabs - Todos los derechos reservados</p>
+    </div>
+</footer>
+
+    <script src="scripts/script.js"></script>
+    
+</body>
+</html>
