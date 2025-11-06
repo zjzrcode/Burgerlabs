@@ -1,11 +1,14 @@
 // scripts/script.js
 
+// Variables globales
+let cart = [];
+let navbar = null;
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Script cargado correctamente');
     
     // Elementos del DOM
     const mobileMenu = document.getElementById('mobile-menu');
-    const navbar = document.querySelector('.navbar');
     const cartFloating = document.getElementById('cartFloating');
     const cartModal = document.getElementById('cartModal');
     const closeCart = document.getElementById('closeCart');
@@ -15,75 +18,61 @@ document.addEventListener('DOMContentLoaded', function() {
     const whatsappOrder = document.getElementById('whatsappOrder');
     const addToCartButtons = document.querySelectorAll('.btn-add-cart');
     const contactForm = document.getElementById('contactForm');
+    navbar = document.querySelector('.navbar');
     
-    // Carrito de compras
-    let cart = [];
-    
-    // ===== NAVEGACIÓN CORREGIDA =====
-    function initNavigation() {
-        console.log('🔧 Inicializando navegación...');
+    // ===== INICIALIZACIÓN COMPLETA =====
+    function init() {
+        console.log('🚀 Inicializando aplicación...');
         
-        // Seleccionar TODOS los enlaces de navegación
-        const navLinks = document.querySelectorAll('.navbar a[href^="#"], .footer a[href^="#"]');
-        console.log(`🔗 Encontrados ${navLinks.length} enlaces de navegación`);
+        // Inicializar sistemas en orden correcto
+        updateCart();
+        initMobileMenu();
+        initHeaderScroll();
+        initScrollAnimations();
         
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                
-                if (href && href.startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        console.log(`🎯 Navegando a: ${href}`);
-                        
-                        // Cerrar menú móvil si está abierto
-                        if (window.innerWidth <= 768 && navbar && mobileMenu) {
-                            navbar.classList.remove('active');
-                            mobileMenu.classList.remove('active');
-                            document.body.style.overflow = 'auto'; // Asegurar que el scroll esté habilitado
-                        }
-                        
-                        // Calcular posición con offset del header
-                        const header = document.querySelector('.header');
-                        const headerHeight = header ? header.offsetHeight : 0;
-                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                        
-                        // Scroll suave
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    } else {
-                        console.warn(`⚠️ Elemento no encontrado: ${targetId}`);
-                    }
-                }
-            });
-        });
+        // Inicializar sistema de miembros si existe
+        if (typeof memberCheckout !== 'undefined') {
+            memberCheckout.init();
+        }
         
-        console.log('✅ Navegación inicializada correctamente');
+        // Inicializar la sección de video
+        initVideoSection();
+        
+        console.log('✅ Aplicación inicializada correctamente');
     }
     
-    // ===== MENÚ MÓVIL CORREGIDO =====
+    // ===== MENÚ MÓVIL =====
     function initMobileMenu() {
         if (mobileMenu && navbar) {
             mobileMenu.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevenir que el evento se propague
+                e.stopPropagation();
+                e.preventDefault();
+                
                 navbar.classList.toggle('active');
                 this.classList.toggle('active');
                 
-                // Prevenir/permiter scroll del body cuando el menú está abierto
+                // Controlar scroll del body
                 if (navbar.classList.contains('active')) {
                     document.body.style.overflow = 'hidden';
+                    document.body.classList.add('menu-open');
                 } else {
                     document.body.style.overflow = 'auto';
+                    document.body.classList.remove('menu-open');
                 }
             });
             
-            // Cerrar menú al hacer clic en un enlace (ya manejado en initNavigation)
-            // Cerrar menú al hacer clic fuera de él
+            // Cerrar menú al hacer clic en un enlace
+            const navLinks = navbar.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navbar.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    document.body.classList.remove('menu-open');
+                });
+            });
+            
+            // Cerrar menú al hacer clic fuera
             document.addEventListener('click', function(e) {
                 if (navbar.classList.contains('active') && 
                     !navbar.contains(e.target) && 
@@ -91,15 +80,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     navbar.classList.remove('active');
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = 'auto';
+                    document.body.classList.remove('menu-open');
                 }
             });
             
-            // Cerrar menú al redimensionar la ventana si se hace más grande
+            // Cerrar menú al redimensionar
             window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && navbar.classList.contains('active')) {
+                if (window.innerWidth > 768) {
                     navbar.classList.remove('active');
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = 'auto';
+                    document.body.classList.remove('menu-open');
                 }
             });
         }
@@ -406,6 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showToast(`${itemName} eliminado del carrito`);
     }
     
+    // ===== ACTUALIZAR ENLACE DE WHATSAPP CON INFORMACIÓN DE MIEMBROS =====
     function updateWhatsAppLink() {
         if (!whatsappOrder) return;
         
@@ -414,15 +406,26 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        let message = "¡Hola BurgerLabs! Me gustaría hacer el siguiente pedido:\n\n";
+        let message = "";
         
-        cart.forEach(item => {
-            message += `• ${item.quantity}x ${item.name} - $${item.price * item.quantity}\n`;
-        });
-        
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        message += `\n*Total: $${total}*\n\n`;
-        message += `¡Gracias!`;
+        // Verificar si hay un miembro activo
+        if (typeof memberCheckout !== 'undefined' && memberCheckout.currentMember) {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message = memberCheckout.processMemberOrder(cart, total);
+            
+            // Aplicar beneficios automáticos
+            memberCheckout.applyAutomaticBenefits();
+        } else {
+            // Mensaje para no miembros
+            message = "¡Hola BurgerLabs! Me gustaría hacer el siguiente pedido:\n\n";
+            
+            cart.forEach(item => {
+                message += `• ${item.quantity}x ${item.name} - $${item.price * item.quantity}\n`;
+            });
+
+            message += `\n*Total: $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}*\n\n`;
+            message += `¡Gracias!`;
+        }
         
         const encodedMessage = encodeURIComponent(message);
         whatsappOrder.href = `https://wa.me/5492657560516?text=${encodedMessage}`;
@@ -551,28 +554,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ===== INICIALIZACIÓN COMPLETA =====
-    function init() {
-        console.log('🚀 Inicializando aplicación...');
-        updateCart();
-        initNavigation();
-        initMobileMenu(); // ¡Importante! Inicializar el menú móvil
-        initHeaderScroll();
-        initScrollAnimations();
-        
-        // Inicializar la sección de video con un pequeño delay
-        setTimeout(initVideoSection, 500);
-        
-        console.log('✅ Aplicación inicializada correctamente');
-    }
-    
-    // Inicializar cuando el DOM esté listo
+    // ===== INICIALIZAR =====
     init();
     
     // Debug: Verificar que todos los elementos existen
     console.log('🔍 Elementos encontrados:', {
         mobileMenu: !!mobileMenu,
-        navbar: !!navbar,
         cartFloating: !!cartFloating,
         cartModal: !!cartModal,
         contactForm: !!contactForm,

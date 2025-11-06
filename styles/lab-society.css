@@ -1,0 +1,1151 @@
+/* ===== THE LAB SOCIETY STYLES ===== */
+
+/* Variables específicas para The Lab Society */
+:root {
+    --lab-gold: #FFD700;
+    --lab-red: #FF4444;
+    --lab-green: #00FF88;
+    --lab-purple: #9D4EDD;
+    --lab-blue: #4361EE;
+    --lab-dark: #1A1A2E;
+}
+
+/* Sección principal The Lab Society */
+.lab-society-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, 
+        rgba(26, 26, 46, 0.95) 0%,
+        rgba(40, 30, 60, 0.92) 100%);
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.lab-society-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 68, 68, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(157, 78, 221, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Hero del Club */
+.lab-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.lab-hero-content {
+    text-align: left;
+}
+
+.lab-badge {
+    background: linear-gradient(135deg, var(--lab-gold), var(--lab-red));
+    color: var(--text-dark);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    animation: pulse 2s infinite;
+}
+
+.lab-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--lab-gold), var(--lab-red), var(--lab-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.lab-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.lab-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lab-flask {
+    width: 200px;
+    height: 300px;
+    border-radius: 60px 60px 20px 20px;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid var(--lab-gold);
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.flask-liquid {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 60%;
+    background: linear-gradient(to top, var(--lab-red), var(--lab-purple));
+    border-radius: 50px 50px 10px 10px;
+    animation: liquidMove 4s ease-in-out infinite;
+}
+
+.flask-bubbles {
+    position: absolute;
+    bottom: 60%;
+    left: 0;
+    right: 0;
+    height: 40%;
+}
+
+.flask-bubbles span {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: bubbleRise 3s infinite;
+}
+
+.flask-bubbles span:nth-child(1) {
+    width: 8px;
+    height: 8px;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.flask-bubbles span:nth-child(2) {
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    animation-delay: 0.5s;
+}
+
+.flask-bubbles span:nth-child(3) {
+    width: 6px;
+    height: 6px;
+    left: 70%;
+    animation-delay: 1s;
+}
+
+.flask-bubbles span:nth-child(4) {
+    width: 10px;
+    height: 10px;
+    left: 40%;
+    animation-delay: 1.5s;
+}
+
+/* Botón Lab Society */
+.btn-lab {
+    background: linear-gradient(135deg, var(--lab-gold), var(--lab-red));
+    color: var(--text-dark);
+    font-weight: bold;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-lab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, var(--lab-red), var(--lab-gold));
+    color: var(--text-dark);
+}
+
+.btn-lab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.5s;
+}
+
+.btn-lab:hover::before {
+    left: 100%;
+}
+
+.btn-lab.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-lab.btn-large {
+    padding: 18px 40px;
+    font-size: 1.2rem;
+}
+
+/* Sección Qué es The Lab Society */
+.lab-about {
+    margin-bottom: 100px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: var(--lab-gold);
+    position: relative;
+}
+
+.section-subtitle::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--lab-gold), var(--lab-red));
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    color: #ccc;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lab-about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.lab-about-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: #e8e8e8;
+}
+
+.lab-about-text strong {
+    color: var(--lab-gold);
+}
+
+.member-counter {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.counter-number {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--lab-gold);
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.counter-label {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.lab-about-image {
+    display: flex;
+    justify-content: center;
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.community-item {
+    aspect-ratio: 1;
+    background-image: url('bienvenidos.png');
+    border-radius: 15px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.community-item:nth-child(2n) {
+    background: linear-gradient(135deg, var(--lab-red), var(--lab-gold));
+}
+
+.community-item:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Sistema de Recompensas */
+.lab-rewards {
+    margin-bottom: 100px;
+}
+
+.rewards-system {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+}
+
+.rewards-track {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.reward-level {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border-left: 4px solid var(--lab-gold);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.reward-level::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+    transition: 0.5s;
+}
+
+.reward-level:hover::before {
+    left: 100%;
+}
+
+.reward-level:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.level-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--lab-gold), var(--lab-red));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    flex-shrink: 0;
+}
+
+.level-info h4 {
+    color: var(--lab-gold);
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+.level-info p {
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.points-required {
+    background: rgba(255, 215, 0, 0.2);
+    color: var(--lab-gold);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.points-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.points-card {
+    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,68,68,0.1));
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,215,0,0.3);
+    width: 100%;
+}
+
+.points-card h4 {
+    color: var(--lab-gold);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.points-list {
+    list-style: none;
+}
+
+.points-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.points-list li:last-child {
+    border-bottom: none;
+}
+
+.points-list i {
+    color: var(--lab-gold);
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Beneficios Exclusivos */
+.lab-benefits {
+    margin-bottom: 100px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--lab-gold), var(--lab-red));
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--lab-gold), var(--lab-red));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: var(--text-dark);
+}
+
+.benefit-card h4 {
+    color: var(--lab-gold);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.benefit-card p {
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* Cómo Unirse */
+.lab-join {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 100px;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255,215,0,0.2);
+}
+
+.join-content h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--lab-gold);
+}
+
+.join-content > p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.join-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 45px 15px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--lab-gold);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(255,215,0,0.2);
+}
+
+.form-group i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--lab-gold);
+}
+
+.form-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 15px;
+}
+
+.form-note a {
+    color: var(--lab-gold);
+    text-decoration: none;
+}
+
+.form-note a:hover {
+    text-decoration: underline;
+}
+
+.join-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.membership-card {
+    width: 100%;
+    max-width: 350px;
+    background: linear-gradient(135deg, #2D2D44, #1A1A2E);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    border: 2px solid var(--lab-gold);
+    transform: rotate(5deg);
+    transition: transform 0.3s ease;
+}
+
+.membership-card:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--lab-gold), var(--lab-red));
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.card-logo {
+    width: 50px;
+    height: 50px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+}
+
+.card-title h4 {
+    color: var(--text-dark);
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.card-title p {
+    color: rgba(0,0,0,0.7);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.card-body {
+    padding: 25px 20px;
+}
+
+.member-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--lab-gold);
+    margin-bottom: 10px;
+}
+
+.member-id {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.member-points {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.points-bar {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.points-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--lab-gold), var(--lab-red));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.points-text {
+    color: var(--lab-gold);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+}
+
+.qr-placeholder {
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lab-gold);
+    font-size: 2rem;
+}
+
+/* Comunidad en Acción */
+.lab-community {
+    margin-bottom: 100px;
+}
+
+.community-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.feed-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    display: flex;
+    gap: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.feed-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.feed-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--lab-purple), var(--lab-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.feed-content {
+    flex-grow: 1;
+}
+
+.feed-content h4 {
+    color: var(--lab-gold);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.feed-content p {
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.feed-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.feed-date {
+    color: #999;
+}
+
+.feed-hashtag {
+    color: var(--lab-gold);
+    font-weight: bold;
+}
+
+.community-cta {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    border: 1px solid rgba(255,215,0,0.2);
+}
+
+.community-cta > p {
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.hashtag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--lab-gold), var(--lab-red));
+    color: var(--text-dark);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+/* Llamado Final */
+.lab-final {
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, 
+        rgba(255, 215, 0, 0.1) 0%,
+        rgba(255, 68, 68, 0.1) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(255,215,0,0.3);
+}
+
+.final-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--lab-gold), var(--lab-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.final-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #ccc;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 30px rgba(255, 215, 0, 0.7);
+    }
+    100% {
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    }
+}
+
+@keyframes liquidMove {
+    0%, 100% {
+        height: 60%;
+    }
+    50% {
+        height: 65%;
+    }
+}
+
+@keyframes bubbleRise {
+    0% {
+        bottom: 0;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 100%;
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .lab-hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .lab-title {
+        font-size: 2.5rem;
+    }
+    
+    .rewards-system {
+        grid-template-columns: 1fr;
+    }
+    
+    .lab-join {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .lab-about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .lab-society-section {
+        padding: 80px 0;
+    }
+    
+    .lab-title {
+        font-size: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .community-feed {
+        grid-template-columns: 1fr;
+    }
+    
+    .lab-join {
+        padding: 30px 20px;
+    }
+    
+    .final-content h3 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .lab-badge {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+    
+    .lab-title {
+        font-size: 1.8rem;
+    }
+    
+    .lab-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .reward-level {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .feed-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .feed-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* ===== CORRECCIONES PARA THE LAB SOCIETY ===== */
+
+/* Corregir botones en móviles */
+@media (max-width: 768px) {
+    .btn-lab {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .lab-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .lab-title {
+        font-size: 2rem;
+    }
+    
+    .lab-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+/* Corregir colores de niveles */
+.reward-level[data-level="1"] .level-icon {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.reward-level[data-level="2"] .level-icon {
+    background: linear-gradient(135deg, #9D4EDD, #7B2CBF);
+}
+
+.reward-level[data-level="3"] .level-icon {
+    background: linear-gradient(135deg, #4361EE, #3A0CA3);
+}
+
+.reward-level[data-level="4"] .level-icon {
+    background: linear-gradient(135deg, #FF4444, #CC0000);
+}
+
+/* Corregir formulario de registro */
+.join-form input {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.join-form input:focus {
+    outline: none;
+    border-color: var(--lab-gold);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Corregir tarjeta de membresía en móviles */
+@media (max-width: 480px) {
+    .membership-card {
+        transform: none !important;
+        margin: 0 auto;
+    }
+    
+    .membership-card:hover {
+        transform: scale(1.02) !important;
+    }
+}
+
+/* Corregir animaciones de aparición */
+.lab-hero-content,
+.reward-level,
+.benefit-card,
+.feed-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Asegurar que los iconos sean visibles */
+.benefit-icon,
+.level-icon,
+.feature-icon {
+    color: #333 !important;
+}
+
+/* Corregir problemas de scroll */
+.lab-society-section {
+    overflow-x: hidden;
+}
+
+/* Corregir estilos de texto */
+.lab-about-text p {
+    color: #e8e8e8;
+    line-height: 1.6;
+}
+
+.section-description {
+    color: #ccc;
+}
+
+/* Estilos para notificación de éxito */
+.success-notification {
+    background: linear-gradient(135deg, #00FF88, #00cc88);
+    color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(0,255,136,0.3);
+    animation: slideInUp 0.6s ease;
+}
+
+.success-content h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.success-content p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+
+.success-content .btn {
+    margin-top: 10px;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para notificación de éxito */
+.success-notification {
+    background: linear-gradient(135deg, #00FF88, #00cc88);
+    color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(0,255,136,0.3);
+    animation: slideInUp 0.6s ease;
+}
+
+.success-content h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.success-content p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+
+.success-content .btn {
+    margin-top: 10px;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para mensajes del laboratorio */
+.lab-message {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 10001;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    max-width: 400px;
+}
+
+.lab-message-success {
+    background: var(--lab-green);
+    color: var(--text-dark);
+}
+
+.lab-message-error {
+    background: var(--lab-red);
+    color: var(--text-dark);
+}
+
+.lab-message.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.lab-message-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

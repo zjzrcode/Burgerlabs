@@ -1671,3 +1671,293 @@ section {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 }
+
+/* Asegurar que el scroll suave funcione */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Corregir posibles problemas de posición */
+section {
+    scroll-margin-top: 100px;
+}
+
+/* Mejoras para el menú móvil */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 20px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .navbar.active {
+        display: flex;
+    }
+    
+    .nav-link {
+        margin: 10px 0;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+
+
+
+/* ===== CORRECCIONES ESPECÍFICAS ===== */
+
+/* Corregir posición del menú móvil */
+@media (max-width: 768px) {
+    .header .container {
+        position: relative;
+        padding: 10px 15px;
+    }
+    
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(10px);
+        display: none;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+    }
+    
+    .navbar.active {
+        display: flex;
+    }
+    
+    .nav-link {
+        margin: 0;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    .menu-toggle {
+        display: flex;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1001;
+    }
+    
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* Corregir scroll suave y posición de secciones */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+section {
+    scroll-margin-top: 100px;
+}
+
+/* Corregir colores de botones Lab Society en index.html */
+.btn-lab {
+    background: linear-gradient(135deg, #FFD700, #FF4444);
+    color: #333;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-lab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    color: #333;
+}
+
+/* Corregir posición del hero en móviles */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 80px;
+        min-height: 100vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+}
+
+/* Corregir estilos del carrito */
+.cart-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-content {
+    background: rgba(30, 30, 40, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Corregir colores de la sección de video */
+.video-info-section {
+    background: linear-gradient(135deg, rgba(20, 20, 30, 0.95), rgba(40, 30, 20, 0.92));
+}
+
+.info-card {
+    background: linear-gradient(135deg, rgba(40, 40, 50, 0.95), rgba(60, 50, 40, 0.9));
+}
+
+/* Corregir estilos de formulario */
+.contact-form input,
+.contact-form textarea {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Corregir footer */
+.footer {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+/* Corregir animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Asegurar que las imágenes sean responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Corregir problemas de scroll en móviles */
+@media (max-width: 768px) {
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+/* Corregir estilos de precio en items del menú */
+.price {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Corregir estilos de botones de redes sociales */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--primary-color);
+    color: #333;
+    transform: translateY(-2px);
+}
+
+.total1 {
+    color: white;
+}
