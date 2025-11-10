@@ -175,7 +175,7 @@ class MemberCheckout {
     generateBenefitsList(member) {
         const availableBenefits = membersDB.getAvailableBenefits(member.id);
         const benefitTexts = {
-            'gaseosa-gratis': 'Gaseosa gratis en tu primera compra',
+            'postre-gratis': 'Postre gratis en tu primera compra',
             'papas-gratis': 'Papas fritas gratis',
             'descuento-10': '10% de descuento',
             'combo-gratis': 'Combo gratis',
@@ -252,9 +252,9 @@ processMemberOrder(cart, total) {
     // Actualizar puntos en la base de datos
     const updateResult = membersDB.updateMemberPurchase(this.currentMember.id, total, cart);
     
-    // Aplicar beneficio de gaseosa gratis en primera compra
+    // Aplicar beneficio de postre gratis en primera compra
     if (this.isFirstPurchase()) {
-        membersDB.useBenefit(this.currentMember.id, 'gaseosa-gratis');
+        membersDB.useBenefit(this.currentMember.id, 'postre-gratis');
     }
     
     // Generar mensaje para WhatsApp
@@ -299,7 +299,7 @@ generateMemberMessage(cart, total, updateResult) {
     
     // Beneficios de primera compra
     if (member.purchases === 0) {
-        message += `\n🎁 *PRIMERA COMPRA*: Gaseosa gratis incluida\n`;
+        message += `\n🎁 *PRIMERA COMPRA*: Postre gratis incluido\n`;
     }
 
     // Próximo nivel
@@ -319,7 +319,7 @@ generateMemberMessage(cart, total, updateResult) {
     // Obtener texto del beneficio
     getBenefitText(benefit) {
         const texts = {
-            'gaseosa-gratis': 'Gaseosa gratis',
+            'postre-gratis': 'Postre gratis',
             'papas-gratis': 'Papas fritas gratis',
             'descuento-10': '10% de descuento',
             'combo-gratis': 'Combo gratis',
@@ -330,18 +330,18 @@ generateMemberMessage(cart, total, updateResult) {
         return texts[benefit] || benefit;
     }
 
-    // Verificar si es primera compra para beneficio de gaseosa gratis
+    // Verificar si es primera compra para beneficio de postre gratis
     isFirstPurchase() {
         return this.currentMember && this.currentMember.purchases === 0;
     }
 
-    // Aplicar beneficio automático (gaseosa gratis en primera compra)
-// Aplicar beneficio automático (gaseosa gratis en primera compra) - FUNCIÓN CORREGIDA
+    // Aplicar beneficio automático (postre gratis en primera compra)
+// Aplicar beneficio automático (postre gratis en primera compra) - FUNCIÓN CORREGIDA
 applyAutomaticBenefits() {
     if (this.isFirstPurchase()) {
-        const benefitApplied = membersDB.useBenefit(this.currentMember.id, 'gaseosa-gratis');
+        const benefitApplied = membersDB.useBenefit(this.currentMember.id, 'postre-gratis');
         if (benefitApplied) {
-            this.showNotification('🎉 ¡Gaseosa gratis agregada por tu primera compra como socio!', 'success');
+            this.showNotification('🎉 ¡Postre gratis agregado por tu primera compra como socio!', 'success');
             return true;
         }
     }

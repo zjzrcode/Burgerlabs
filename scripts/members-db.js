@@ -17,7 +17,7 @@ class MembersDB {
                     1: { 
                         name: 'Aprendiz', 
                         requiredPoints: 0, 
-                        benefits: ['gaseosa-gratis'],
+                        benefits: ['postre-gratis'],
                         color: '#FFD700',
                         description: 'Miembro Nuevo'
                     },
