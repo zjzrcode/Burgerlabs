@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - The Lab Society</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/lab-society.css">
+    <link rel="stylesheet" href="styles/membership-card.css">
+    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header Admin -->
+        <header class="admin-header">
+            <div class="container">
+                <div class="admin-branding">
+                    <img src="inicio/logo.png" alt="BurgerLabs Logo" class="admin-logo">
+                    <div class="admin-titles">
+                        <h1><i class="fas fa-id-card"></i> Panel Admin - The Lab Society</h1>
+                        <p>Sistema de generación de tarjetas de membresía</p>
+                    </div>
+                </div>
+                <div class="admin-actions">
+                    <button id="logoutBtn" class="btn btn-secondary">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="admin-main">
+            <div class="container">
+                <div class="admin-grid">
+                    <!-- Panel de Control -->
+                    <div class="control-panel">
+                        <div class="panel-section">
+                            <h3><i class="fas fa-cog"></i> Panel de Control</h3>
+                            
+                            <!-- Búsqueda de Miembro -->
+                            <div class="search-section">
+                                <h4>Buscar Miembro</h4>
+                                <div class="search-input">
+                                    <input type="text" id="searchMember" placeholder="ID, Email o Teléfono del miembro...">
+                                    <button id="searchBtn" class="btn btn-primary">
+                                        <i class="fas fa-search"></i> Buscar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Gestión Manual -->
+                            <div class="manual-section">
+                                <h4>Crear Tarjeta Manualmente</h4>
+                                <form id="manualForm">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>ID del Miembro:</label>
+                                            <input type="text" id="memberId" placeholder="LAB-0001" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nombre:</label>
+                                            <input type="text" id="memberName" placeholder="Nombre completo" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nivel:</label>
+                                            <select id="memberLevel" required>
+                                                <option value="1">1 - Aprendiz</option>
+                                                <option value="2">2 - Experimento</option>
+                                                <option value="3">3 - Científico</option>
+                                                <option value="4">4 - Maestro</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Puntos:</label>
+                                            <input type="number" id="memberPoints" value="50" min="0" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Compras Realizadas:</label>
+                                            <input type="number" id="memberPurchases" value="0" min="0" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Total Gastado:</label>
+                                            <input type="number" id="memberTotalSpent" value="0" min="0" step="100" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-full">
+                                        <i class="fas fa-plus"></i> Crear Tarjeta
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Actualización Masiva -->
+                            <div class="bulk-section">
+                                <h4>Actualización Masiva</h4>
+                                <div class="bulk-actions">
+                                    <button id="updateAllBtn" class="btn btn-secondary btn-full">
+                                        <i class="fas fa-sync"></i> Actualizar Todas las Tarjetas
+                                    </button>
+                                    <button id="exportAllBtn" class="btn btn-success btn-full">
+                                        <i class="fas fa-download"></i> Exportar Todas
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vista Previa de Tarjeta -->
+                    <div class="preview-panel">
+                        <h3><i class="fas fa-eye"></i> Vista Previa</h3>
+                        <div class="card-container">
+                            <div class="membership-card" id="previewCard">
+                                <!-- La tarjeta se generará aquí dinámicamente -->
+                            </div>
+                        </div>
+                        
+                        <!-- Controles de la Tarjeta -->
+                        <div class="card-controls">
+                            <div class="control-group">
+                                <label>Plantilla:</label>
+                                <select id="cardTemplate">
+                                    <option value="classic">Clásico</option>
+                                    <option value="modern">Moderno</option>
+                                    <option value="premium">Premium</option>
+                                    <option value="neon">Neón</option>
+                                </select>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label>Color de Acento:</label>
+                                <input type="color" id="accentColor" value="#FFD700">
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button id="downloadBtn" class="btn btn-download">
+                                    <i class="fas fa-download"></i> Descargar PNG
+                                </button>
+                                <button id="emailBtn" class="btn btn-email">
+                                    <i class="fas fa-envelope"></i> Enviar por Email
+                                </button>
+                                <button id="saveTemplateBtn" class="btn btn-save">
+                                    <i class="fas fa-save"></i> Guardar Plantilla
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de Miembros -->
+                <div class="members-list">
+                    <h3><i class="fas fa-users"></i> Miembros Registrados</h3>
+                    <div class="members-grid" id="membersGrid">
+                        <!-- Los miembros se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para Envío de Email -->
+    <div class="modal" id="emailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-envelope"></i> Enviar Tarjeta por Email</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="emailForm">
+                    <div class="form-group">
+                        <label>Email del destinatario:</label>
+                        <input type="email" id="recipientEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Asunto:</label>
+                        <input type="text" id="emailSubject" value="Tu Tarjeta de The Lab Society" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje:</label>
+                        <textarea id="emailMessage" rows="4">
+¡Hola! 
+
+Adjunto encontrarás tu tarjeta oficial de The Lab Society. 
+Presentala en tu próxima visita para disfrutar de tus beneficios.
+
+¡Gracias por ser parte de nuestra comunidad!
+
+The Lab Society Team
+                        </textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Enviar Email
+                        </button>
+                        <button type="button" class="btn btn-secondary close-modal">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="scripts/members-db.js"></script>
+    <script src="scripts/admin-auth.js"></script>
+    <script src="scripts/tarjeta-generator.js"></script>
+</body>
+</html>
