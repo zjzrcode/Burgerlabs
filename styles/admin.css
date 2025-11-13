@@ -359,18 +359,3 @@
         margin: 20px;
     }
 }
-
-/* Agregar al final de styles/admin.css */
-.admin-notification {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.admin-notification.show {
-    opacity: 1;
-}
-
-/* Ocultar contenido hasta verificar autenticación */
-.admin-container {
-    min-height: 100vh;
-}
