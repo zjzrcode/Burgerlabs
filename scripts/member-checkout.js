@@ -249,13 +249,13 @@ processMemberOrder(cart, total) {
         return this.generateNonMemberMessage(cart, total);
     }
 
-    // Actualizar puntos en la base de datos
-    const updateResult = membersDB.updateMemberPurchase(this.currentMember.id, total, cart);
-    
-    // Aplicar beneficio de postre gratis en primera compra
+    // Aplicar beneficio de postre gratis en primera compra ANTES de actualizar
     if (this.isFirstPurchase()) {
         membersDB.useBenefit(this.currentMember.id, 'postre-gratis');
     }
+
+    // Actualizar puntos en la base de datos
+    const updateResult = membersDB.updateMemberPurchase(this.currentMember.id, total, cart);
     
     // Generar mensaje para WhatsApp
     return this.generateMemberMessage(cart, total, updateResult);
@@ -338,11 +338,17 @@ generateMemberMessage(cart, total, updateResult) {
     // Aplicar beneficio automático (postre gratis en primera compra)
 // Aplicar beneficio automático (postre gratis en primera compra) - FUNCIÓN CORREGIDA
 applyAutomaticBenefits() {
+    if (!this.currentMember) return false;
+    
+    // Solo aplicar si es primera compra y el beneficio está disponible
     if (this.isFirstPurchase()) {
-        const benefitApplied = membersDB.useBenefit(this.currentMember.id, 'postre-gratis');
-        if (benefitApplied) {
-            this.showNotification('🎉 ¡Postre gratis agregado por tu primera compra como socio!', 'success');
-            return true;
+        const availableBenefits = membersDB.getAvailableBenefits(this.currentMember.id);
+        if (availableBenefits.includes('postre-gratis')) {
+            const benefitApplied = membersDB.useBenefit(this.currentMember.id, 'postre-gratis');
+            if (benefitApplied) {
+                this.showNotification('🎉 ¡Postre gratis agregado por tu primera compra como socio!', 'success');
+                return true;
+            }
         }
     }
     return false;

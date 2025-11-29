@@ -162,14 +162,14 @@ registerMember(memberData) {
     // Actualizar después de compra
 // En members-db.js, reemplaza SOLO esta función:
 
-// Actualizar después de compra - FUNCIÓN CORREGIDA
+// REEMPLAZA COMPLETAMENTE la función updateMemberPurchase:
 updateMemberPurchase(memberId, cartTotal, items) {
     const db = this.getDB();
     const member = db.members.find(m => m.id === memberId);
     
     if (member) {
-        // Calcular puntos CORREGIDO: 10 puntos por cada $1000 gastados
-        const pointsEarned = Math.floor(cartTotal / 1000) * 10;
+        // CORRECCIÓN: 1 punto por cada $1000 gastados, mínimo 10 puntos
+        const pointsEarned = Math.max(Math.floor(cartTotal / 1000), 10);
         
         member.points += pointsEarned;
         member.totalSpent += cartTotal;

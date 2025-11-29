@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generar Acceso Admin - BurgerLabs</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 600px; 
+            margin: 50px auto; 
+            padding: 20px; 
+        }
+        button { 
+            padding: 15px 30px; 
+            font-size: 16px; 
+            background: #FFD700; 
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            margin: 10px 0; 
+        }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+        }
+        .link-box { 
+            background: #f5f5f5; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin: 20px 0; 
+            word-break: break-all; 
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 Generar Acceso Admin - BurgerLabs</h1>
+    
+    <div>
+        <h3>Tu URL de GitHub Pages:</h3>
+        <input type="text" id="baseUrl" placeholder="https://zjzrcode.github.io/Burgerlabs" value="https://zjzrcode.github.io/Burgerlabs">
+        
+        <button onclick="generateLink()">🔄 Generar Enlace de 24 Horas</button>
+        
+        <div id="linkContainer" style="display: none;">
+            <h3>✅ Enlace Generado:</h3>
+            <div class="link-box" id="generatedLink"></div>
+            <button onclick="copyLink()">📋 Copiar Enlace</button>
+            <p><small>⏰ Este enlace expirará en 24 horas</small></p>
+        </div>
+    </div>
+
+    <script>
+        function generateLink() {
+            const baseUrl = document.getElementById('baseUrl').value.trim();
+            if (!baseUrl) {
+                alert('Por favor ingresa tu URL de GitHub Pages');
+                return;
+            }
+
+            const timestamp = Date.now();
+            
+            // FRASE SECRETA - DEBE SER LA MISMA QUE EN admin-auth.js
+            const secretPhrase = "persona_androide_2010";
+            const baseString = timestamp + secretPhrase;
+            
+            let hash = 0;
+            for (let i = 0; i < baseString.length; i++) {
+                const char = baseString.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            const token = Math.abs(hash).toString(36).substring(0, 8);
+            
+            const fullLink = `${baseUrl}/admin.html?token=${token}&t=${timestamp}`;
+            
+            document.getElementById('generatedLink').textContent = fullLink;
+            document.getElementById('linkContainer').style.display = 'block';
+            
+            console.log('Enlace generado:', fullLink);
+        }
+
+        function copyLink() {
+            const linkText = document.getElementById('generatedLink').textContent;
+            navigator.clipboard.writeText(linkText).then(() => {
+                alert('✅ Enlace copiado al portapapeles!');
+            });
+        }
+
+        // Auto-generar al cargar la página
+        window.onload = function() {
+            // Intentar detectar la URL automáticamente
+            const currentUrl = window.location.href;
+            if (currentUrl.includes('github.io')) {
+                const base = currentUrl.substring(0, currentUrl.lastIndexOf('/'));
+                document.getElementById('baseUrl').value = base;
+            }
+        };
+    </script>
+</body>
+</html>
